@@ -38,5 +38,35 @@
         "src": "/products/sedas/bem_bolado_marcelo_d2.webp",
         "nome": "Bem Bolado Marcelo D2",
         "preco": "R$ 5,50"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Seda King Rolling Paper",
+        "preco": "R$ 5,00"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Seda Tatu Do Bem Bronw",
+        "preco": "R$ 8,00"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Bem Bolado Pop Slim",
+        "preco": "R$ 5,50"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Seda Sadhu Ultra Longa",
+        "preco": "R$ 7,00"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Seda Bem Bolado Mc Kevin",
+        "preco": "R$ 10,00"
+    },
+    {
+        "src": "/products/sedas/nome.webp",
+        "nome": "Papelito Brown Longa",
+        "preco": "R$ 9,00"
     }
 ]

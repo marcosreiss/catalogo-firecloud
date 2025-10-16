@@ -38,5 +38,30 @@
         "src": "/products/piteiras/piteira_de_vidro_premium_style.webp",
         "nome": "Piteira de Vidro Premium Style",
         "preco": "R$ 35,00"
+    },
+    {
+        "src": "/products/piteiras/NOME.webp",
+        "nome": "Piteira Papelito Ultra Longa Dupla",
+        "preco": "R$ 10,00"
+    },
+    {
+        "src": "/products/piteiras/NOME.webp",
+        "nome": "Piteira Tonabê Ultra Longa",
+        "preco": "R$ 10,00"
+    },
+    {
+        "src": "/products/piteiras/nome.webp",
+        "nome": "Piteira Brocasito",
+        "preco": "R$ 10,00"
+    },
+    {
+        "src": "/products/piteiras/nome.webp",
+        "nome": "Piteira Abduzido Extra Large",
+        "preco": "R$ 10,00"
+    },
+    {
+        "src": "/products/piteiras/nome.webp",
+        "nome": "Piteira Tonabê",
+        "preco": "R$ 25,00"
     }
 ]
