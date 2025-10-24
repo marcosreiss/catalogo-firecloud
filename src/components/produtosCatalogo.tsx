@@ -1,7 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Paper, Card, CardContent, Typography, Box, Grid, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Grid,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Image from "next/image";
 
 interface Produto {
@@ -16,19 +25,23 @@ interface ProdutosCatalogoProps {
   id: string;
 }
 
-export default function ProdutosCatalogo({ jsonPath, categoria, id }: ProdutosCatalogoProps) {
+export default function ProdutosCatalogo({
+  jsonPath,
+  categoria,
+  id,
+}: ProdutosCatalogoProps) {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const theme = useTheme();
-  
-  // Responsividade
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // < 600px
-  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600px - 960px
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md")); // > 960px
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     fetch(jsonPath)
       .then((res) => res.json())
-      .then((data) => setProdutos(data));
+      .then((data) => setProdutos(data))
+      .catch(() => setProdutos([]));
   }, [jsonPath]);
 
   return (
@@ -42,7 +55,7 @@ export default function ProdutosCatalogo({ jsonPath, categoria, id }: ProdutosCa
         position: "relative",
         overflow: "hidden",
         backgroundColor: "rgba(255, 255, 255, 0.8)",
-        marginBottom: 3
+        marginBottom: 3,
       }}
     >
       {/* Título da categoria */}
@@ -58,7 +71,12 @@ export default function ProdutosCatalogo({ jsonPath, categoria, id }: ProdutosCa
           zIndex: 1,
         }}
       >
-        <Typography variant={isMobile ? "h5" : isTablet ? "h4" : "h3"} fontSize={isMobile ? 16 : isTablet ? 20 : 25} fontWeight="bold" color="white">
+        <Typography
+          variant={isMobile ? "h5" : isTablet ? "h4" : "h3"}
+          fontSize={isMobile ? 16 : isTablet ? 20 : 25}
+          fontWeight="bold"
+          color="white"
+        >
           {categoria}
         </Typography>
       </Box>
@@ -71,7 +89,7 @@ export default function ProdutosCatalogo({ jsonPath, categoria, id }: ProdutosCa
               <Card
                 sx={{
                   display: "flex",
-                  flexDirection: "column", // Coloca a imagem acima do texto
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
                   p: isMobile ? 2 : isTablet ? 2.5 : 3,
@@ -80,22 +98,37 @@ export default function ProdutosCatalogo({ jsonPath, categoria, id }: ProdutosCa
                   boxShadow: 3,
                   transition: "transform 0.3s, box-shadow 0.3s",
                   "&:hover": {
-                    ...(isDesktop ? { transform: "scale(1.05)", boxShadow: 6 } : {}),
+                    ...(isDesktop
+                      ? { transform: "scale(1.05)", boxShadow: 6 }
+                      : {}),
                   },
                 }}
               >
-                {/* Imagem do produto (maior e centralizada) */}
+                {/* Imagem do produto com fallback */}
                 <Image
                   src={produto.src}
                   alt={produto.nome}
                   width={isMobile ? 120 : isTablet ? 140 : 160}
                   height={isMobile ? 120 : isTablet ? 140 : 160}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/unavailable.webp";
+                  }}
                 />
+
                 <CardContent sx={{ textAlign: "center", width: "100%" }}>
-                  <Typography variant={isMobile ? "body1" : "h6"} fontWeight="medium">
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    fontWeight="medium"
+                  >
                     {produto.nome}
                   </Typography>
-                  <Typography variant="body1" color="primary" fontWeight="bold" mt={1}>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    fontWeight="bold"
+                    mt={1}
+                  >
                     {produto.preco}
                   </Typography>
                 </CardContent>
